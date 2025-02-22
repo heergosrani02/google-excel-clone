@@ -5,20 +5,18 @@ body, p{
 
 .container{
     display: grid;
-    grid-template-columns: px auto;
-    grid-template-rows: 35px auto;
+    grid-template-columns: 45px auto;
+    grid-template-rows: 27px auto;
     height: 100vh;
     overflow-x: scroll;
 }
 
-.container div{
-    border: 2px solid rgba(0, 0, 0, 0.314);
-}
-
 .head-row{
-    grid-column: 1/3;
-    background-color: aqua;
+    grid-column: 2/3;
     display: flex;
+    position: sticky;
+    top: 0px;
+    background-color: white;
 }
 
 .head-row .col-head{
@@ -27,11 +25,34 @@ body, p{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.353);
+    border: 1px solid #0000005a;
+    font-size: 15px;
 }
 
-.serial-no{
-    background-color: red;
+.junction{
+    width: 42px;
+    height: 23px;
+    background-color: #f4f4f4;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    border: 2px solid grey;
+}
+
+.serial-num{
+    position: sticky;
+    left: 0px;
+    background-color: white;
+}
+
+.serial-num .serial-num-col{
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #0000005a;
+    font-size: 13px;
 }
 
 .body{
