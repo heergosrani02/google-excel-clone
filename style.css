@@ -55,6 +55,13 @@ body, p{
     font-size: 13px;
 }
 
-.body{
-    background-color: green;
+.row-cell{
+    display: flex;
+}
+
+.body .col-cell{
+    background-color: white;
+    width: 90px;
+    height: 20px;
+    border: 1px solid #82828263;
 }

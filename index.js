@@ -8,9 +8,9 @@ let headRow = document.querySelector(".head-row");
 let serialNumCol = document.querySelector(".serial-num");
 let body = document.querySelector(".body");
 
-for (let i = 0; i < columns; i++) {
+for (let i = 1; i < columns; i++) {
   let headCell = document.createElement("div");
-  headCell.textContent = String.fromCharCode(i + 65);
+  headCell.textContent = String.fromCharCode(i + 64);
   headCell.classList.add("col-head");
   headRow.appendChild(headCell);
 }
@@ -22,3 +22,16 @@ for (let i = 0; i < rows; i++) {
   serialNumCol.appendChild(serialNumCell);
 }
 
+for(let i = 1; i <= rows; i++){
+    let rowCell = document.createElement("div");
+        rowCell.classList.add("row-cell");
+
+    for(let j = 1; j < columns; j++){
+        let colCell = document.createElement("div");
+        colCell.textContent = " ";
+        colCell.classList.add("col-cell");
+        rowCell.appendChild(colCell);
+    }
+
+    body.appendChild(rowCell);
+}
