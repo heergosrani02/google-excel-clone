@@ -1,9 +1,43 @@
-body, p{
+body,
+p {
     margin: 0px;
     padding: 0px;
 }
 
-.container{
+.filter-opt {
+    background-color: #f0f7ef;
+    padding: 10px;
+}
+
+.fr-alc {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked+label,
+input[type="radio"]:checked+label {
+    background-color: #bae2ff;
+}
+
+input[type="color"] {
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+}
+
+label {
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.container {
     display: grid;
     grid-template-columns: 45px auto;
     grid-template-rows: 27px auto;
@@ -11,7 +45,7 @@ body, p{
     overflow-x: scroll;
 }
 
-.head-row{
+.head-row {
     grid-column: 2/3;
     display: flex;
     position: sticky;
@@ -19,7 +53,7 @@ body, p{
     background-color: white;
 }
 
-.head-row .col-head{
+.head-row .col-head {
     width: 90px;
     height: 25px;
     display: flex;
@@ -29,7 +63,7 @@ body, p{
     font-size: 15px;
 }
 
-.junction{
+.junction {
     width: 42px;
     height: 23px;
     background-color: #f4f4f4;
@@ -40,13 +74,13 @@ body, p{
     border: 2px solid grey;
 }
 
-.serial-num{
+.serial-num {
     position: sticky;
     left: 0px;
     background-color: white;
 }
 
-.serial-num .serial-num-col{
+.serial-num .serial-num-col {
     height: 20px;
     display: flex;
     justify-content: center;
@@ -55,11 +89,11 @@ body, p{
     font-size: 13px;
 }
 
-.row-cell{
+.row-cell {
     display: flex;
 }
 
-.main-body .col-cell{
+.main-body .col-cell {
     background-color: white;
     width: 90px;
     height: 20px;
@@ -70,18 +104,18 @@ body, p{
     overflow-x: hidden;
 }
 
-.box{
+.box {
     width: 95vw;
     display: flex;
     gap: 5px;
 }
 
-.box input{
+.box input {
     flex-grow: 1;
     border-radius: 5px;
 }
 
-.selected-cell{
+.selected-cell {
     width: 90px;
     border: 1px solid #0000005a;
     border-radius: 5px;
