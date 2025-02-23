@@ -6,7 +6,8 @@ let rows = 100;
 
 let headRow = document.querySelector(".head-row");
 let serialNumCol = document.querySelector(".serial-num");
-let body = document.querySelector(".body");
+let body = document.querySelector(".main-body");
+let selectedCell = document.querySelector(".selected-cell");
 
 for (let i = 1; i < columns; i++) {
   let headCell = document.createElement("div");
@@ -27,11 +28,16 @@ for(let i = 1; i <= rows; i++){
         rowCell.classList.add("row-cell");
 
     for(let j = 1; j < columns; j++){
-        let colCell = document.createElement("div");
-        colCell.textContent = " ";
+        let colCell = document.createElement("span");
+        colCell.id = `${String.fromCharCode(j + 64)}${i}`;
+        colCell.contentEditable = "true";
         colCell.classList.add("col-cell");
         rowCell.appendChild(colCell);
     }
 
     body.appendChild(rowCell);
 }
+
+body.addEventListener("click", (e) => {
+  selectedCell.textContent = e.target.id;
+})

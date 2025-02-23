@@ -34,7 +34,7 @@ body, p{
     height: 23px;
     background-color: #f4f4f4;
     position: fixed;
-    top: 0px;
+    top: 45px;
     left: 0px;
     z-index: 1;
     border: 2px solid grey;
@@ -59,9 +59,32 @@ body, p{
     display: flex;
 }
 
-.body .col-cell{
+.main-body .col-cell{
     background-color: white;
     width: 90px;
     height: 20px;
     border: 1px solid #82828263;
+    outline: none;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+}
+
+.box{
+    width: 95vw;
+    display: flex;
+    gap: 5px;
+}
+
+.box input{
+    flex-grow: 1;
+    border-radius: 5px;
+}
+
+.selected-cell{
+    width: 90px;
+    border: 1px solid #0000005a;
+    border-radius: 5px;
+    margin-left: 2px;
+    padding-left: 10px;
 }
