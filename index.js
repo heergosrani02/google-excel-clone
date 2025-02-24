@@ -1,14 +1,14 @@
-//add cells to head row
-// 27(no of columns) times
-
 let columns = 27;
 let rows = 100;
 
 let headRow = document.querySelector(".head-row");
 let serialNumCol = document.querySelector(".serial-num");
 let body = document.querySelector(".main-body");
-let selectedCell = document.querySelector(".selected-cell");
+let activeCell = document.querySelector(".selected-cell");
 let form = document.querySelector(".filter-opt");
+
+let selectedCell = "";
+let allCellData = {};
 
 for (let i = 1; i < columns; i++) {
   let headCell = document.createElement("div");
@@ -39,15 +39,20 @@ for (let i = 1; i <= rows; i++) {
   body.appendChild(rowCell);
 }
 
-let selectCell = "";
-
 body.addEventListener("click", (e) => {
-  selectCell = e.target;
-  selectedCell.textContent = e.target.id;
+
+  if(selectedCell){
+    selectedCell.style.border = "1px solid #82828263";
+  }
+
+  selectedCell = e.target;
+  selectedCell.style.border = "1px solid rgb(22, 69, 255)";
+  activeCell.textContent = e.target.id;
+  applyCellInfoToForm();
 });
 
 form.addEventListener("change", () => {
-  if (!selectCell) {
+  if (!selectedCell) {
     alert("Please Select a cell before applying styles!!");
     form.reset();
     return;
@@ -56,24 +61,45 @@ form.addEventListener("change", () => {
   const formData = {
     fontFamily: form["fontFamily"].value,
     fontSize: form["fontSize"].value,
-    fontWeight: form["isBold"].checked,
-    fontItalic: form["isItalic"].checked,
-    fontUnderline: form["isUnderline"].checked,
+    fontWeight: form["fontWeight"].checked,
+    fontStyle: form["fontStyle"].checked,
+    fontUnderline: form["fontUnderline"].checked,
     align: form["align"].value,
     textColor: form["textColor"].value,
     backgroundColor: form["backgroundColor"].value,
-  };
+  }
+
+  allCellData[selectedCell.id] = {...formData, innerText: selectedCell.innerText}
 
   applyStyleToSelectedCell(formData);
 });
 
 function applyStyleToSelectedCell(formData) {
-  selectCell.style.fontSize = formData.fontSize;
-  selectCell.style.fontFamily = formData.fontFamily;
-  selectCell.style.fontWeight = formData.fontWeight ? "bold" : "normal";
-  selectCell.style.fontStyle = formData.fontItalic ? "italic" : "normal";
-  selectCell.style.textDecoration = formData.fontUnderline? "underline" : "none";
-  selectCell.style.textAlign = formData.align;
-  selectCell.style.color = formData.textColor;
-  selectCell.style.backgroundColor = formData.backgroundColor;
+  selectedCell.style.fontSize = formData.fontSize;
+  selectedCell.style.fontFamily = formData.fontFamily;
+  selectedCell.style.fontWeight = formData.fontWeight ? "bold" : "normal";
+  selectedCell.style.fontStyle = formData.fontStyle ? "italic" : "normal";
+  selectedCell.style.textDecoration = formData.fontUnderline? "underline" : "none";
+  selectedCell.style.textAlign = formData.align;
+  selectedCell.style.color = formData.textColor;
+  selectedCell.style.backgroundColor = formData.backgroundColor;
+}
+
+function applyCellInfoToForm(){
+
+  if(!allCellData[selectedCell.id]){
+    form.reset();
+    return;
+  }
+
+  let specificCellData = allCellData[selectedCell.id];
+
+  for(let key in specificCellData){
+    if(key === "fontWeight" || key === "fontStyle" || key === "fontUnderline"){
+      form[key].checked = specificCellData[key];
+    }
+    else{
+      form[key].value = specificCellData[key];
+    }
+  }
 }
